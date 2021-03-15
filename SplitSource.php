@@ -151,7 +151,8 @@ function split_file($file, $chunks, $undo) {
             $in_define = false;
         }
     }
-    if (!empty(trim($current))) {
+    $current = trim($current);
+    if (!empty($current)) {
         fwrite(STDERR, "ERROR: $current".PHP_EOL);
         exit();
     }
@@ -277,12 +278,15 @@ function split_file($file, $chunks, $undo) {
                 'animations_manager[_(-][^.]|AnimationsManager[^;>]' => "AnimationsManager",
                 'audios_manager[_(-][^.]|AudiosManager' => "AudiosManager",
                 'auth_manager[_(-][^.]|AuthManager' => 'AuthManager',
+                'background_manager[_(-][^.]|BackgroundManager' => "BackgroundManager",
                 'ConfigShared|shared_config[(]' => 'ConfigShared',
                 'contacts_manager[_(-][^.]|ContactsManager([^ ;.]| [^*])' => 'ContactsManager',
+                'country_info_manager[_(-][^.]|CountryInfoManager' => 'CountryInfoManager',
                 'documents_manager[_(-][^.]|DocumentsManager' => "DocumentsManager",
                 'file_reference_manager[_(-][^.]|FileReferenceManager|file_references[)]' => 'FileReferenceManager',
                 'file_manager[_(-][^.]|FileManager([^ ;.]| [^*])|update_file[)]' => 'files/FileManager',
                 'G[(][)]|Global[^A-Za-z]' => 'Global',
+                'group_call_manager[_(-][^.]|GroupCallManager' => 'GroupCallManager',
                 'HashtagHints' => 'HashtagHints',
                 'inline_queries_manager[_(-][^.]|InlineQueriesManager' => 'InlineQueriesManager',
                 'language_pack_manager[_(-][^.]|LanguagePackManager' => 'LanguagePackManager',
@@ -290,6 +294,8 @@ function split_file($file, $chunks, $undo) {
                 'MessageCopyOptions' => 'MessageCopyOptions',
                 'messages_manager[_(-][^.]|MessagesManager' => 'MessagesManager',
                 'notification_manager[_(-][^.]|NotificationManager|notifications[)]' => 'NotificationManager',
+                'phone_number_manager[_(-][^.]|PhoneNumberManager' => "PhoneNumberManager",
+                'poll_manager[_(-][^.]|PollManager' => "PollManager",
                 'PublicDialogType|get_public_dialog_type' => 'PublicDialogType',
                 'SecretChatActor' => 'SecretChatActor',
                 'secret_chats_manager[_(-][^.]|SecretChatsManager' => 'SecretChatsManager',
